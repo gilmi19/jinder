@@ -1,0 +1,21 @@
+spring:
+  liquibase:
+    enabled: true
+  jpa:
+    hibernate:
+      show-sql: true
+      ddl-auto: validate
+  datasource:
+    url: jdbc:postgresql://localhost:5432/jinder
+    username: postgres
+    password: 1234
+    driverClassName: org.postgresql.Driver
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        orm:
+          jdbc:
+            bind: TRACE

@@ -1,0 +1,17 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="11021558-create-table-user_jinder.xml" author="gilmi19">
+        <sql>
+            create table if not exists user_jinder
+            (
+                id          bigserial primary key,
+                email varchar(50) unique,
+                password varchar(100),
+                nickname varchar(100) unique,
+                gender varchar(100),
+                description varchar(250)
+
+                );
+        </sql>
+    </changeSet>
+</databaseChangeLog>

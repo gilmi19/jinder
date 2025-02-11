@@ -1,0 +1,14 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="11021633-create-table-view_history.xml" author="gilmi19">
+        <sql>
+            create table if not exists view_history
+            (
+                id          bigserial primary key,
+                user_who_viewed bigint references user_jinder(id) unique,
+                viewed_user bigint references user_jinder(id) unique
+                );
+        </sql>
+    </changeSet>
+</databaseChangeLog>
+<!--2.4 Создать сущность история просмотров: пользователь который смотрел, просмотренный пользователь(Сочетание уникально)..-->

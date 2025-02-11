@@ -1,0 +1,14 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="11021611-create-table-liked.xml" author="gilmi19">
+        <sql>
+            create table if not exists liked
+            (
+                id          bigserial primary key,
+                who_liked bigint references user_jinder(id),
+                liked bigint references user_jinder(id)
+                );
+        </sql>
+    </changeSet>
+</databaseChangeLog>
+<!--2.2 Создать сущность нравится: пользователь который лайкнул, пользователь которого лайкнули.-->

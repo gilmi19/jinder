@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/11021558-create-table-user_jinder.xml
+  - include:
+            file: db/changelog/11021611-create-table-liked.xml
+  - include:
+            file: db/changelog/11021630-create-table-pair.xml
+  - include:
+            file: db/changelog/11021633-create-table-view_history.xml

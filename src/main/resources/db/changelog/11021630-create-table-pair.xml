@@ -1,0 +1,14 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="11021630-create-table-pair.xml" author="gilmi19">
+        <sql>
+            create table if not exists pair
+            (
+                id          bigserial primary key,
+                user1 bigint references user_jinder(id) unique,
+                user2 bigint references user_jinder(id) unique
+                );
+        </sql>
+    </changeSet>
+</databaseChangeLog>
+<!--2.3 Создать сущность пара: пользователь1, пользователь2 (Сочетание уникально).-->
