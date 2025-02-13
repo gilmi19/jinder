@@ -2,8 +2,14 @@ databaseChangeLog:
   - include:
       file: db/changelog/11021558-create-table-user_jinder.xml
   - include:
-            file: db/changelog/11021611-create-table-liked.xml
+      file: db/changelog/11021611-create-table-liked.xml
   - include:
-            file: db/changelog/11021630-create-table-pair.xml
+      file: db/changelog/11021630-create-table-pair.xml
   - include:
-            file: db/changelog/11021633-create-table-view_history.xml
+      file: db/changelog/11021633-create-table-view_history.xml
+  - include:
+      file: db/changelog/13021712-alter-table-user_jinder.xml
+  - include:
+      file: db/changelog/130220251931-create-table-tokens.xml
+  - include:
+      file: db/changelog/130220252117-alter-table-tokens.xml

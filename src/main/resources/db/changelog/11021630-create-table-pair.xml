@@ -5,8 +5,8 @@
             create table if not exists pair
             (
                 id          bigserial primary key,
-                user1 bigint references user_jinder(id) unique,
-                user2 bigint references user_jinder(id) unique
+                user1 bigint references user_jinder(id),
+                user2 bigint references user_jinder(id)
                 );
         </sql>
     </changeSet>

@@ -5,8 +5,8 @@
             create table if not exists view_history
             (
                 id          bigserial primary key,
-                user_who_viewed bigint references user_jinder(id) unique,
-                viewed_user bigint references user_jinder(id) unique
+                user_who_viewed bigint references user_jinder(id),
+                viewed_user bigint references user_jinder(id)
                 );
         </sql>
     </changeSet>
