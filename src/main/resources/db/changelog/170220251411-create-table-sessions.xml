@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="170220251411-create-table-sessions.xml" author="gilmi19">
+        <sql>
+            create table if not exists sessions
+            (
+                id bigserial primary key,
+                user_id bigint references user_jinder(id),
+                token varchar(10)
+            )
+        </sql>
+    </changeSet>
+</databaseChangeLog>

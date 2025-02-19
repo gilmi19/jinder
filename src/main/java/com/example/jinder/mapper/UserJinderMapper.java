@@ -1,11 +1,10 @@
-package com.example.jinder;
+package com.example.jinder.mapper;
 
 import com.example.jinder.dto.SignUpDto;
+import com.example.jinder.dto.UserShowDto;
 import com.example.jinder.entity.UserJinder;
-import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
 public interface UserJinderMapper {
@@ -19,4 +18,6 @@ public interface UserJinderMapper {
     @Mapping(target = "viewedUsers", ignore = true)
     @Mapping(target = "isVerified", constant = "false")
     UserJinder toEntity(SignUpDto dto);
+
+    UserShowDto toShowDto(UserJinder userJinder);
 }

@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 public class MailService {
     private final JavaMailSender javaMailSender;
     @Value("${spring.mail.username}")
-    private  String fromTo;
+    private String fromTo;
 
-    public void sendMail(String to, String subject, String text){
+    public void sendMail(String to, String subject, String text) {
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
         simpleMailMessage.setTo(to);
         simpleMailMessage.setSubject(subject);

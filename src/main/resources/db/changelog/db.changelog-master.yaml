@@ -13,3 +13,9 @@ databaseChangeLog:
       file: db/changelog/130220251931-create-table-tokens.xml
   - include:
       file: db/changelog/130220252117-alter-table-tokens.xml
+  - include:
+      file: db/changelog/170220251411-create-table-sessions.xml
+  - include:
+      file: db/changelog/170220251722-alter-table-tokens.xml
+  - include:
+      file: db/changelog/170220251726-alter-table-sessions.xml

@@ -4,15 +4,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Pair {
     @Id
     private Long id;
@@ -26,9 +24,4 @@ public class Pair {
     @ManyToOne
     @JoinColumn(name = "user2")
     private UserJinder user2;
-
-//    id          bigserial primary key,
-//    user1 bigint references user_jinder(id) unique,
-//    user2 bigint references user_jinder(id) unique
-//                );
 }

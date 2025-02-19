@@ -19,7 +19,7 @@ public class Token {
     private Long id;
 
     @Column
-    @Size(max = 6)
+    @Size(max = 18)
     private String token;
 
     @Column

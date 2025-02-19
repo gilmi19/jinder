@@ -1,20 +1,16 @@
 package com.example.jinder.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class ViewHistory {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ToString.Exclude
@@ -26,9 +22,4 @@ public class ViewHistory {
     @ManyToOne
     @JoinColumn(name = "viewed_user")
     private UserJinder viewedUser;
-
-//id          bigserial primary key,
-//                user_who_viewed bigint references user_jinder(id) unique,
-//                viewed_user bigint references user_jinder(id) unique
-//                )
 }

@@ -1,6 +1,7 @@
 package com.example.jinder.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @Entity
@@ -8,18 +9,18 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Liked {
+@Table(name = "sessions")
+public class Session {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
     @ToString.Exclude
-    @JoinColumn(name = "who_liked")
-    private UserJinder whoLiked;
+    @JoinColumn(name = "user_id")
+    private UserJinder userJinder;
 
-    @ManyToOne
-    @ToString.Exclude
-    @JoinColumn(name = "liked")
-    private UserJinder liked;
+    @Column
+    @Size(max = 22)
+    private String token;
 }

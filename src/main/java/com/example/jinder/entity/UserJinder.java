@@ -8,7 +8,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 import java.util.List;
 
 @Entity
@@ -43,21 +42,27 @@ public class UserJinder {
     @Column()
     private Boolean isVerified;
 
-    @OneToMany(mappedBy = "whoLiked", cascade = CascadeType.REFRESH)
+    @OneToMany(mappedBy = "whoLiked", cascade = {CascadeType.REFRESH, CascadeType.REMOVE})
     private List<Liked> whoLikeds;
 
-    @OneToMany(mappedBy = "liked", cascade = CascadeType.REFRESH)
+    @OneToMany(mappedBy = "liked", cascade = {CascadeType.REFRESH, CascadeType.REMOVE})
     private List<Liked> likeds;
 
-    @OneToMany(mappedBy = "user1", cascade = CascadeType.REFRESH)
+    @OneToMany(mappedBy = "user1", cascade = {CascadeType.REFRESH, CascadeType.REMOVE})
     private List<Pair> user1;
 
-    @OneToMany(mappedBy = "user2", cascade = CascadeType.REFRESH)
+    @OneToMany(mappedBy = "user2", cascade = {CascadeType.REFRESH, CascadeType.REMOVE})
     private List<Pair> user2;
 
-    @OneToMany(mappedBy = "userWhoViewed",  cascade = CascadeType.REFRESH)
+    @OneToMany(mappedBy = "userWhoViewed", cascade = {CascadeType.REFRESH, CascadeType.REMOVE})
     private List<ViewHistory> usersWhoViewed;
 
-    @OneToMany(mappedBy = "viewedUser",  cascade = CascadeType.REFRESH)
+    @OneToMany(mappedBy = "viewedUser", cascade = {CascadeType.REFRESH, CascadeType.REMOVE})
     private List<ViewHistory> viewedUsers;
+
+    @OneToMany(mappedBy = "userJinder", cascade = {CascadeType.REFRESH, CascadeType.REMOVE})
+    private List<Token> tokens;
+
+    @OneToMany(mappedBy = "userJinder", cascade = {CascadeType.REFRESH, CascadeType.REMOVE})
+    private List<Session> sessions;
 }
