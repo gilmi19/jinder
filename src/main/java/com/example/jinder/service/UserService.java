@@ -7,6 +7,7 @@ import com.example.jinder.mapper.UserJinderMapper;
 import com.example.jinder.repository.UserRepository;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,14 @@ public class UserService {
         UserJinder entity = mapper.toEntity(dto);
         userRepository.save(entity);
         log.info("Сохраненная сущность - {}", entity);
+    }
+
+    public UserJinder createTest(SignUpDto dto) {
+        checkUserExisting(dto);
+        UserJinder entity = mapper.toEntity(dto);
+        userRepository.save(entity);
+        log.info("Сохраненная сущность - {}", entity);
+        return entity;
     }
 
     public UserJinder findByEmailAndPassword(String email, String password) {
@@ -50,6 +59,7 @@ public class UserService {
                 .orElseThrow(() -> new EntityNotFoundException("Пользователь с таким nickname не найден"));
     }
 
+    @Transactional
     public void selfDelete(String nickName) {
         userRepository.deleteByNickname(nickName);
     }

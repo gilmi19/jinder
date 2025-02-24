@@ -4,7 +4,7 @@ spring:
   jpa:
     hibernate:
       show-sql: true
-      ddl-auto: validate
+      ddl-auto: create-drop
   datasource:
     url: jdbc:postgresql://localhost:5432/jinder
     username: ${DB_USER}
