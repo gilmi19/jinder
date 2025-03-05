@@ -1,7 +1,6 @@
 package com.example.jinder.repository;
 
 import com.example.jinder.entity.UserJinder;
-import com.example.jinder.enums.Gender;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

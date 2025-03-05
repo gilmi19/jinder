@@ -1,4 +1,10 @@
 package com.example.jinder.dto;
 
-public record SignInDto(String nickname, String password) {
+import io.swagger.v3.oas.annotations.media.Schema;
+
+public record SignInDto(
+        @Schema(description = "Имя пользователя", example = "Валерий")
+        String nickname,
+        @Schema(description = "Пароль пользователя", example = "Mypass123!@")
+        String password) {
 }

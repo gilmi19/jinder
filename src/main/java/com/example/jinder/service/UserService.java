@@ -2,7 +2,6 @@ package com.example.jinder.service;
 
 import com.example.jinder.dto.SignUpDto;
 import com.example.jinder.entity.UserJinder;
-import com.example.jinder.enums.Gender;
 import com.example.jinder.mapper.UserJinderMapper;
 import com.example.jinder.repository.UserRepository;
 import jakarta.persistence.EntityExistsException;
