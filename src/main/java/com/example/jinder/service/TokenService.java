@@ -19,7 +19,7 @@ public class TokenService {
     private final TokenUtil tokenUtil = new TokenUtil();
     private final MailService mailService;
     private final static String SUBJECT_TEXT = "Ваш токен для подтверждения";
-    private UserService userService;
+    private final UserService userService;
 
     public void save(UserJinder userJinder, String tokenValue, LocalDateTime createdAt) {
         Token token = Token.builder()

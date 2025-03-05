@@ -6,10 +6,12 @@ import com.example.jinder.enums.TokenType;
 import com.example.jinder.exception.InvalidTokenForUserException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class AuthorizationService {
     private final TokenService tokenService;
     private final SessionService sessionService;
@@ -19,6 +21,7 @@ public class AuthorizationService {
     public void signIn(SignInDto dto) {
         UserJinder user = userService.findByNicknameAndPassword(dto.nickname(), dto.password());
         String sessionToken = tokenService.createToken(TokenType.SIGN_IN);
+        log.info("Created session token: {}", sessionToken);
         sessionService.create(sessionToken, user);
     }
 

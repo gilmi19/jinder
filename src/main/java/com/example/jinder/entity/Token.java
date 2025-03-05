@@ -29,7 +29,8 @@ public class Token {
     private LocalDateTime createdAt;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id",
+            foreignKey = @ForeignKey(name = "fk_token_user", foreignKeyDefinition = "ON DELETE CASCADE"))
     @ToString.Exclude
     private UserJinder userJinder;
 }

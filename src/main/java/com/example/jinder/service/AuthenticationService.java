@@ -25,6 +25,7 @@ public class AuthenticationService {
         userService.save(user);
     }
 
+    //TODO: обновлять токен, а не удалять
     @Transactional()
     public void refreshAuthToken(String email) {
         tokenService.deleteByUserEmail(email);

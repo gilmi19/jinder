@@ -16,6 +16,8 @@ public interface UserJinderMapper {
     @Mapping(target = "user2", ignore = true)
     @Mapping(target = "usersWhoViewed", ignore = true)
     @Mapping(target = "viewedUsers", ignore = true)
+    @Mapping(target = "tokens", ignore = true)
+    @Mapping(target = "sessions", ignore = true)
     @Mapping(target = "isVerified", constant = "false")
     UserJinder toEntity(SignUpDto dto);
 

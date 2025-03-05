@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class RegistrationController {
     private final RegistrationService registrationService;
 
+    //TODO: сделать нормальный путь
     @PostMapping("/sign-up")
     public ResponseEntity<String> signUp(@RequestBody SignUpDto dto) {
         log.debug("Входящие параметры: {}", dto);

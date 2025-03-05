@@ -9,13 +9,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/authenticate")
+@RequestMapping("/auth")
 @RequiredArgsConstructor
 @Slf4j
 public class AuthenticationController {
     private final AuthenticationService authenticationService;
 
-    @PostMapping("/auth")
+    @PostMapping()
     public ResponseEntity<?> auth(@RequestBody AuthDto dto) {
         authenticationService.authenticate(dto);
         return ResponseEntity.status(HttpStatus.OK).build();

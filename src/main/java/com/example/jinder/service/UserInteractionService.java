@@ -10,6 +10,7 @@ import com.example.jinder.mapper.UserJinderMapper;
 import com.example.jinder.repository.LikedRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class UserInteractionService {
     private final ViewHistoryService viewHistoryService;
     private final UserService userService;
@@ -36,6 +38,8 @@ public class UserInteractionService {
     @Transactional
     public UserShowDto show(String sessionToken) {
         Session entitySessionToken = sessionService.findByToken(sessionToken);
+        log.info("найденная сессия - {}", entitySessionToken);
+
         UserJinder userWhoViewed = entitySessionToken.getUserJinder();
 
         return switch (userWhoViewed.getGender()) {
@@ -52,9 +56,11 @@ public class UserInteractionService {
      *                     Добавляет новую запись, нравится: текущий пользователь, пользователь который понравился
      *                     Если пользователь, который понравился, лайкнул текущего пользователя, то добавляется пара.
      */
+    @Transactional
     public void like(String sessionToken, String nickname, boolean isSecondUser) {
 
         Session userSession = sessionService.findByToken(sessionToken);
+
         UserJinder whoLiked = userSession.getUserJinder();
         UserJinder likedUser = userService.findByNickname(nickname);
         likedService.save(whoLiked, likedUser);
@@ -77,7 +83,8 @@ public class UserInteractionService {
     }
 
     private UserShowDto showUserByGender(UserJinder userWhoViewed, Gender gender) {
-        UserJinder viewedUser = userService.findUnviewedUser(gender);
+        log.info("Переданный пол - {}", gender);
+        UserJinder viewedUser = userService.findUnviewedUser(gender.name());
         viewHistoryService.add(userWhoViewed, viewedUser);
         return mapper.toShowDto(viewedUser);
     }

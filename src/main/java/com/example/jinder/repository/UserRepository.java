@@ -2,7 +2,9 @@ package com.example.jinder.repository;
 
 import com.example.jinder.entity.UserJinder;
 import com.example.jinder.enums.Gender;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -20,7 +22,7 @@ public interface UserRepository extends JpaRepository<UserJinder, Long> {
     Optional<UserJinder> findByNicknameAndPassword(String nickname, String password);
 
     @Query(nativeQuery = true, value = """
-            select *
+            select uj.*
             from user_jinder uj
                      left join view_history v on uj.id = v.viewed_user
             where uj.gender = :gender
@@ -28,9 +30,12 @@ public interface UserRepository extends JpaRepository<UserJinder, Long> {
               and uj.is_verified is true
             limit 1;
             """)
-    Optional<UserJinder> findUnviewedUser(@Param("gender") Gender gender);
+    Optional<UserJinder> findUnviewedUser(@Param("gender") String gender);
 
     Optional<UserJinder> findByNickname(String userName);
 
-    void deleteByNickname(String nickname);
+    @Query(" delete from UserJinder u where u.nickname = :nickname")
+    @Transactional
+    @Modifying()
+    void deleteByNickname(@Param("nickname") String nickname);
 }

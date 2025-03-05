@@ -5,10 +5,9 @@
             create table if not exists liked
             (
                 id          bigserial primary key,
-                who_liked bigint references user_jinder(id),
-                liked bigint references user_jinder(id)
+                who_liked bigint references user_jinder(id) on delete cascade,
+                liked bigint references user_jinder(id) on delete cascade
                 );
         </sql>
     </changeSet>
 </databaseChangeLog>
-<!--2.2 Создать сущность нравится: пользователь который лайкнул, пользователь которого лайкнули.-->

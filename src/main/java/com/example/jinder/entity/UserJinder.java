@@ -42,27 +42,27 @@ public class UserJinder {
     @Column()
     private Boolean isVerified;
 
-    @OneToMany(mappedBy = "whoLiked", cascade = {CascadeType.REFRESH, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "whoLiked", cascade = {CascadeType.REFRESH, CascadeType.REMOVE}, orphanRemoval = true)
     private List<Liked> whoLikeds;
 
-    @OneToMany(mappedBy = "liked", cascade = {CascadeType.REFRESH, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "liked", cascade = {CascadeType.REFRESH, CascadeType.REMOVE}, orphanRemoval = true)
     private List<Liked> likeds;
 
-    @OneToMany(mappedBy = "user1", cascade = {CascadeType.REFRESH, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "user1", cascade = {CascadeType.REFRESH, CascadeType.REMOVE}, orphanRemoval = true)
     private List<Pair> user1;
 
-    @OneToMany(mappedBy = "user2", cascade = {CascadeType.REFRESH, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "user2", cascade = {CascadeType.REFRESH, CascadeType.REMOVE}, orphanRemoval = true)
     private List<Pair> user2;
 
-    @OneToMany(mappedBy = "userWhoViewed", cascade = {CascadeType.REFRESH, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "userWhoViewed", cascade = {CascadeType.REFRESH, CascadeType.REMOVE}, orphanRemoval = true)
     private List<ViewHistory> usersWhoViewed;
 
-    @OneToMany(mappedBy = "viewedUser", cascade = {CascadeType.REFRESH, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "viewedUser", cascade = {CascadeType.REFRESH, CascadeType.REMOVE}, orphanRemoval = true)
     private List<ViewHistory> viewedUsers;
 
-    @OneToMany(mappedBy = "userJinder", cascade = {CascadeType.REFRESH, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "userJinder", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Token> tokens;
 
-    @OneToMany(mappedBy = "userJinder", cascade = {CascadeType.REFRESH, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "userJinder", cascade = {CascadeType.REFRESH, CascadeType.REMOVE}, orphanRemoval = true)
     private List<Session> sessions;
 }

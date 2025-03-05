@@ -23,13 +23,6 @@ public class UserService {
         userRepository.save(userJinder);
     }
 
-    public void create(SignUpDto dto) {
-        checkUserExisting(dto);
-        UserJinder entity = mapper.toEntity(dto);
-        userRepository.save(entity);
-        log.info("Сохраненная сущность - {}", entity);
-    }
-
     public UserJinder createTest(SignUpDto dto) {
         checkUserExisting(dto);
         UserJinder entity = mapper.toEntity(dto);
@@ -48,7 +41,7 @@ public class UserService {
                 .orElseThrow(() -> new EntityNotFoundException("Такой email не зарегистрирован"));
     }
 
-    public UserJinder findUnviewedUser(Gender gender) {
+    public UserJinder findUnviewedUser(String gender) {
         return userRepository
                 .findUnviewedUser(gender)
                 .orElseThrow(() -> new EntityNotFoundException("больше пользователей нет"));
